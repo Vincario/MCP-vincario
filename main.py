@@ -2,6 +2,8 @@ import httpx
 from typing import Any, Dict, Optional
 from mcp.server.fastmcp import FastMCP
 from fastmcp.server.dependencies import get_http_headers
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 import logging
 
 # ---- Config ----
@@ -30,11 +32,16 @@ def _build_url(path: str) -> str:
     return f"{API_BASE}/{path}"
 
 async def _get_json(url: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-    logging.debug("Key is: " + _get_api_key_from_header())
     async with httpx.AsyncClient(timeout=10) as client:
         res = await client.get(url, headers={"X-API-Key": _get_api_key_from_header()}, params=params)
         res.raise_for_status()
         return res.json()
+
+# ---- Custom route ----
+
+@mcp.custom_route("/health", methods=["GET"])
+async def health_check(request: Request) -> JSONResponse:
+    return JSONResponse({"status": "ok"})
 
 # ---- Tools ----
 
