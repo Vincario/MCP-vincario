@@ -21,7 +21,7 @@ mcp = FastMCP(
 
 def _get_api_key_from_header() -> str:
     headers = get_http_headers()
-    key = headers.get("X-API-Key", "")
+    key = headers.get("x-api-key") or headers.get("X-API-Key") or ""
 
     if not key:
         raise RuntimeError("Missing X-API-Key header")
