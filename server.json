@@ -1,0 +1,16 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "com.vincario/vehicle-data",
+  "description": "Vehicle data for AI: VIN decoder, automotive specs, stolen checks, valuation and way more.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/vincario/mcp-vincario",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.vincario.com/mcp"
+    }
+  ]
+}
