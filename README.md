@@ -63,7 +63,7 @@ Add to your MCP config (`.mcp.json` or `claude_desktop_config.json`):
 
 ### Hosted endpoint
 
-If connecting to the hosted server at `https://mcp.vincario.com/`, replace the URL accordingly.
+If connecting to the hosted server at `https://mcp.vincario.com/mcp`, replace the URL accordingly.
 
 ## Example usage
 
